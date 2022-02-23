@@ -9,8 +9,15 @@
             book.AddGrade(4.1);
 
             Book.Greet(args[0]);
-            
-            book.ShowStats();
+
+            var stats = book.GetStatistics();
+
+            Console.WriteLine("After evaluating the following grades:");
+            System.Console.WriteLine(book.GetGradeList());
+            System.Console.WriteLine();
+            System.Console.WriteLine($"The average is: {stats.Average.ToString("##0.00")}");
+            System.Console.WriteLine($"The highest grade is: {stats.Max.ToString("##0.00")}");
+            System.Console.WriteLine($"The lowest grade is: {stats.Min.ToString("##0.00")}");
 
             return;
         }

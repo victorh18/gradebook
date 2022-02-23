@@ -1,5 +1,5 @@
 namespace GradeBook {
-    class Book {
+    public class Book {
         List<double> grades;
         string name;
 
@@ -12,23 +12,17 @@ namespace GradeBook {
             grades.Add(grade);
         }
 
-        public void ShowStats() {
-            var result = 0.0;
+        public Statistics GetStatistics() {
+            return new Statistics { 
+                Max = grades.Max(),
+                Min = grades.Min(),
+                Average = grades.Average()
+            };
+        }
 
-            foreach(var number in grades) {
-                result += number;
-            }
-            
-            result /= grades.Count();
+        public string GetGradeList() {
+            return string.Join(", ", grades);
 
-            var gradeList = string.Join(", ", grades);
-
-            Console.WriteLine("After evaluating the following grades:");
-            System.Console.WriteLine(gradeList);
-            System.Console.WriteLine();
-            System.Console.WriteLine($"The average is: {result.ToString("##0.00")}");
-            System.Console.WriteLine($"The highest grade is: {grades.Max().ToString("##0.00")}");
-            System.Console.WriteLine($"The lowest grade is: {grades.Min().ToString("##0.00")}");
         }
 
         public static void Greet(string name)
