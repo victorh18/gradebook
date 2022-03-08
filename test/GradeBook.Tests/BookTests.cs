@@ -5,7 +5,7 @@ namespace GradeBook.Tests
     public class BookTests
     {
         [Fact]
-        public void Test1()
+        public void BookCalculatesStats()
         {
             // Arrange
             var book = new Book("");
@@ -18,9 +18,9 @@ namespace GradeBook.Tests
             var stats = book.GetStatistics();
 
             // Assert
-            Assert.Equal(stats.Average, 89.7, 1);
-            Assert.Equal(stats.Max, 95.6, 1);
-            Assert.Equal(stats.Min, 85.2, 1);
+            Assert.Equal(89.7, stats.Average, 1);
+            Assert.Equal(95.6, stats.Max, 1);
+            Assert.Equal(85.2, stats.Min, 1);
             
         }
     }

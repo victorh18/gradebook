@@ -95,10 +95,10 @@
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/obj/Debug/net6.0/refint/GradeBook.Tests.dll
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/obj/Debug/net6.0/GradeBook.Tests.pdb
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/obj/Debug/net6.0/GradeBook.Tests.genruntimeconfig.cache
-/Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/obj/Debug/net6.0/ref/GradeBook.Tests.dll
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/bin/Debug/net6.0/CoverletSourceRootsMapping
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/bin/Debug/net6.0/GradeBook.deps.json
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/bin/Debug/net6.0/GradeBook.runtimeconfig.json
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/bin/Debug/net6.0/GradeBook
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/bin/Debug/net6.0/GradeBook.dll
 /Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/bin/Debug/net6.0/GradeBook.pdb
+/Users/vdelarosa/Projects/personal/gradebook/test/GradeBook.Tests/obj/Debug/net6.0/ref/GradeBook.Tests.dll

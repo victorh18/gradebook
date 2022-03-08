@@ -1,11 +1,11 @@
 namespace GradeBook {
     public class Book {
         List<double> grades;
-        string name;
+        public string Name;
 
         public Book(string name)
         {
-            this.name = name;
+            Name = name;
             grades = new List<double>();
         }
         public void AddGrade(double grade) {
