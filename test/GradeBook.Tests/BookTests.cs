@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace GradeBook.Tests
@@ -11,17 +12,30 @@ namespace GradeBook.Tests
             var book = new Book("");
 
             book.AddGrade(95.6);
-            book.AddGrade(85.2);
+            book.AddLetterGrade('B');
             book.AddGrade(88.3);
 
             // Act
             var stats = book.GetStatistics();
 
             // Assert
-            Assert.Equal(89.7, stats.Average, 1);
+            Assert.Equal(88, stats.Average, 1);
             Assert.Equal(95.6, stats.Max, 1);
-            Assert.Equal(85.2, stats.Min, 1);
+            Assert.Equal(80.0, stats.Min, 1);
+            Assert.Equal('B', stats.Letter);
             
+        }
+
+        [Fact]
+        public void GradebookDoesNotAcceptInvalidGrades()
+        {
+            // Given
+            var book = new Book("TestBook");
+            var initialGradeCount = book.Grades.Count;
+            // When
+            Assert.Throws<ArgumentException>(() => book.AddGrade(152));
+            Assert.Throws<ArgumentException>(() => book.AddGrade(-98));
+            // Then
         }
     }
 }
