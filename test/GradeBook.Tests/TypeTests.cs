@@ -7,6 +7,32 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact]
+        public void ValuetypesAlsoPassByValue()
+        {
+            // Given
+            var x = GetInt();
+            // When
+            SetInt(ref x);
+            // Then
+            Assert.Equal(42, x);
+        }
+
+        private void SetInt(ref int x)
+        {
+            x = 42;
+        }
+
+        private void SetInt(int x)
+        {
+            x = 42;
+        }
+
+        private int GetInt()
+        {
+            return 3;
+        }
+
+        [Fact]
         public void ByValueCannotSwapReferences()
         {
             /*
@@ -46,13 +72,15 @@ namespace GradeBook.Tests
             Assert.Equal(BOOK_2, book1.Name);
         }
 
-        public void SwapReferences(Book book1, Book book2) {
+        public void SwapReferences(Book book1, Book book2)
+        {
             Book tempBook = book1;
             book1 = book2;
             book2 = tempBook;
         }
 
-        public void SwapReferences(ref Book book1, ref Book book2) {
+        public void SwapReferences(ref Book book1, ref Book book2)
+        {
             Book tempBook = book1;
             book1 = book2;
             book2 = tempBook;
@@ -73,7 +101,8 @@ namespace GradeBook.Tests
         }
 
         [Fact]
-        public void SimpleMethodCallCanDeepCopy() {
+        public void SimpleMethodCallCanDeepCopy()
+        {
             var book = new Book("Sample book");
             var copiedBook = DeepCopy<Book>(book);
 
@@ -148,7 +177,7 @@ namespace GradeBook.Tests
 
             Assert.Equal("Book 1", book1.Name);
             Assert.Equal("Book 1", book2.Name);
-        } 
+        }
 
         private Book GetBook(string name)
         {
