@@ -3,8 +3,25 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+    public delegate string WriteToLogDelegate(string message);
     public class BookTests
     {
+        [Fact]
+        public void WriteToLogUsingDelegate()
+        {
+            // Given
+            WriteToLogDelegate log = LogToReturn;
+            // When
+        
+            // Then
+            Assert.Equal("Hello", log("Hello"));
+        }
+
+        public string LogToReturn(string m)
+        {
+            return m;
+        }
+
         [Fact]
         public void BookCalculatesStats()
         {
