@@ -2,7 +2,7 @@
     class Program {
         static void Main(string[] args) {
             var book = new Book("Science's Grade Book");
-
+            book.gradeAdded += OnGradeAdded;
             string? input = "";
 
             Book.Greet(args[0]);
@@ -42,6 +42,10 @@
             System.Console.WriteLine($"The lowest grade is: {stats.Min.ToString("##0.00")}");
 
             return;
+        }
+        static void OnGradeAdded(object sender, EventArgs args)
+        {
+            System.Console.WriteLine("[LOG] \tA grade was added.");
         }
     }
 }

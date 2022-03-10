@@ -6,20 +6,32 @@ namespace GradeBook.Tests
     public delegate string WriteToLogDelegate(string message);
     public class BookTests
     {
+        private int delegateCount = 0;
+
         [Fact]
         public void WriteToLogUsingDelegate()
         {
             // Given
             WriteToLogDelegate log = LogToReturn;
+            log += LogWhileIncrementing;
             // When
+            var message = log("Hello!");
+            System.Console.WriteLine(message);
         
             // Then
-            Assert.Equal("Hello", log("Hello"));
+            Assert.Equal(2, delegateCount);
         }
 
         public string LogToReturn(string m)
         {
-            return m;
+            delegateCount++;
+            return m + "33";
+        }
+
+        public string LogWhileIncrementing(string m) 
+        {
+            delegateCount++;
+            return m + "44";
         }
 
         [Fact]

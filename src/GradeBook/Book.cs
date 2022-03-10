@@ -1,6 +1,7 @@
 using System.Text;
 
 namespace GradeBook {
+    public delegate void GradeAdded(object sender, EventArgs args);
     public class Book {
         public List<double> Grades;
         private string name;
@@ -20,6 +21,8 @@ namespace GradeBook {
                 name = value;
             }
         }
+
+        public event GradeAdded gradeAdded;
 
         public Book(string _name)
         {
@@ -52,6 +55,10 @@ namespace GradeBook {
             if (grade <= 100 && grade > 0)
             {
                 Grades.Add(grade);
+                if (gradeAdded != null)
+                {
+                    gradeAdded(this, new EventArgs());
+                }
             } else {
                 throw new ArgumentException($"Invalid {nameof(grade)} value. {nameof(grade)} should be between 0 and 100.");
             }
@@ -91,7 +98,7 @@ namespace GradeBook {
             var stringBuilder = new StringBuilder();
             for (int i = 0; i < Grades.Count; i++)
             {
-                stringBuilder.Append($"#{(i + 1).ToString()}:\t {Grades[i]} \t");
+                stringBuilder.Append($"#{(i + 1).ToString()}:{(((i + 1) >= 10) ? "" : " ")} {Grades[i]} \t");
                 if ((i + 1) % 3 == 0)
                 {
                     stringBuilder.Append(Environment.NewLine);
