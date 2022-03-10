@@ -4,8 +4,8 @@ namespace GradeBook {
     public delegate void GradeAdded(object sender, EventArgs args);
 
     public class NamedObject {
-        private string name;
-        public string Name { 
+        private string? name;
+        public string? Name { 
             get
             {
                 return name;
@@ -20,7 +20,13 @@ namespace GradeBook {
                 name = value;
             }
         }
+
+        public NamedObject(string _name)
+        {
+            Name = _name;
+        }
     }
+
     public class Book : NamedObject {
         public List<double> Grades;
 
