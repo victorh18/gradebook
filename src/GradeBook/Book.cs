@@ -2,11 +2,10 @@ using System.Text;
 
 namespace GradeBook {
     public delegate void GradeAdded(object sender, EventArgs args);
-    public class Book {
-        public List<double> Grades;
+
+    public class NamedObject {
         private string name;
-        public string Name 
-        {
+        public string Name { 
             get
             {
                 return name;
@@ -21,6 +20,9 @@ namespace GradeBook {
                 name = value;
             }
         }
+    }
+    public class Book : NamedObject {
+        public List<double> Grades;
 
         public event GradeAdded gradeAdded;
 
