@@ -31,8 +31,6 @@
                 }
             }
 
-            
-
             var stats = book.GetStatistics();
 
             System.Console.WriteLine();

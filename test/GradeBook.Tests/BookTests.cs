@@ -9,10 +9,10 @@ namespace GradeBook.Tests
         public void BookCalculatesStats()
         {
             // Arrange
-            var book = new Book("");
+            var book = new Book("Book 1");
 
             book.AddGrade(95.6);
-            book.AddLetterGrade('B');
+            book.AddGrade('B');
             book.AddGrade(88.3);
 
             // Act
@@ -36,6 +36,19 @@ namespace GradeBook.Tests
             Assert.Throws<ArgumentException>(() => book.AddGrade(152));
             Assert.Throws<ArgumentException>(() => book.AddGrade(-98));
             // Then
+        }
+
+        [Fact]
+        public void GradebookDoesNotAcceptEmptyName()
+        {
+            // Given
+            var book = new Book("Sample Book");
+            // When
+            
+            // Then
+            Assert.Throws<ArgumentNullException>(() => book.Name = "");
+            Assert.Throws<ArgumentNullException>(() => { var book1 = new Book(""); });
+
         }
     }
 }

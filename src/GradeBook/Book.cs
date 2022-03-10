@@ -3,15 +3,31 @@ using System.Text;
 namespace GradeBook {
     public class Book {
         public List<double> Grades;
-        public string Name;
-
-        public Book(string name)
+        private string name;
+        public string Name 
         {
-            Name = name;
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException($"The {nameof(Name)} value cannot be empty");
+                }
+
+                name = value;
+            }
+        }
+
+        public Book(string _name)
+        {
+            Name = _name;
             Grades = new List<double>();
         }
 
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
             switch (letter)
             {
