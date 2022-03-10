@@ -44,8 +44,8 @@ namespace GradeBook.Tests
             const string BOOK_1 = "Book 1";
             const string BOOK_2 = "Book 2";
             // Given
-            var book1 = new Book(BOOK_1);
-            var book2 = new Book(BOOK_2);
+            var book1 = new InMemoryBook(BOOK_1);
+            var book2 = new InMemoryBook(BOOK_2);
             // When
             SwapReferences(book1, book2);
             // Then
@@ -63,8 +63,8 @@ namespace GradeBook.Tests
             const string BOOK_1 = "Book 1";
             const string BOOK_2 = "Book 2";
             // Given
-            var book1 = new Book(BOOK_1);
-            var book2 = new Book(BOOK_2);
+            var book1 = new InMemoryBook(BOOK_1);
+            var book2 = new InMemoryBook(BOOK_2);
             // When
             SwapReferences(ref book1, ref book2);
             // Then
@@ -72,16 +72,16 @@ namespace GradeBook.Tests
             Assert.Equal(BOOK_2, book1.Name);
         }
 
-        public void SwapReferences(Book book1, Book book2)
+        public void SwapReferences(InMemoryBook book1, InMemoryBook book2)
         {
-            Book tempBook = book1;
+            InMemoryBook tempBook = book1;
             book1 = book2;
             book2 = tempBook;
         }
 
-        public void SwapReferences(ref Book book1, ref Book book2)
+        public void SwapReferences(ref InMemoryBook book1, ref InMemoryBook book2)
         {
-            Book tempBook = book1;
+            InMemoryBook tempBook = book1;
             book1 = book2;
             book2 = tempBook;
         }
@@ -89,12 +89,12 @@ namespace GradeBook.Tests
         [Fact]
         public void TwoVariablesHoldSameInstanceButThenGetNewInstancesEach()
         {
-            var book1 = new Book("Book 1");
+            var book1 = new InMemoryBook("Book 1");
             var book2 = book1;
 
             Assert.Equal(book1.Name, book2.Name);
 
-            book2 = new Book("Book 2");
+            book2 = new InMemoryBook("Book 2");
 
             Assert.Equal("Book 1", book1.Name);
             Assert.Equal("Book 2", book2.Name);
@@ -103,8 +103,8 @@ namespace GradeBook.Tests
         [Fact]
         public void SimpleMethodCallCanDeepCopy()
         {
-            var book = new Book("Sample book");
-            var copiedBook = DeepCopy<Book>(book);
+            var book = new InMemoryBook("Sample book");
+            var copiedBook = DeepCopy<InMemoryBook>(book);
 
             copiedBook.Name = "Copied Book";
 
@@ -126,9 +126,9 @@ namespace GradeBook.Tests
             Assert.Equal("New Name", book1.Name);
         }
 
-        private void GetBookSetName(ref Book book, string name)
+        private void GetBookSetName(ref InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
         }
 
         [Fact]
@@ -140,21 +140,21 @@ namespace GradeBook.Tests
             Assert.Equal("Book 1", book1.Name);
         }
 
-        private void GetBookSetName(Book book, string name)
+        private void GetBookSetName(InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
         }
 
         [Fact]
         public void CanSetNameFromReference()
         {
-            var book1 = new Book("Book 1");
+            var book1 = new InMemoryBook("Book 1");
             SetName(book1, "New Book Name");
 
             Assert.Equal("New Book Name", book1.Name);
         }
 
-        private void SetName(Book book1, string name)
+        private void SetName(InMemoryBook book1, string name)
         {
             book1.Name = name;
         }
@@ -179,9 +179,9 @@ namespace GradeBook.Tests
             Assert.Equal("Book 1", book2.Name);
         }
 
-        private Book GetBook(string name)
+        private InMemoryBook GetBook(string name)
         {
-            return new Book(name);
+            return new InMemoryBook(name);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace GradeBook.Tests
         public void BookCalculatesStats()
         {
             // Arrange
-            var book = new Book("Book 1");
+            var book = new InMemoryBook("Book 1");
 
             book.AddGrade(95.6);
             book.AddGrade('B');
@@ -59,7 +59,7 @@ namespace GradeBook.Tests
         public void GradebookDoesNotAcceptInvalidGrades()
         {
             // Given
-            var book = new Book("TestBook");
+            var book = new InMemoryBook("TestBook");
             var initialGradeCount = book.Grades.Count;
             // When
             Assert.Throws<ArgumentException>(() => book.AddGrade(152));
@@ -71,12 +71,12 @@ namespace GradeBook.Tests
         public void GradebookDoesNotAcceptEmptyName()
         {
             // Given
-            var book = new Book("Sample Book");
+            var book = new InMemoryBook("Sample Book");
             // When
             
             // Then
             Assert.Throws<ArgumentNullException>(() => book.Name = "");
-            Assert.Throws<ArgumentNullException>(() => { var book1 = new Book(""); });
+            Assert.Throws<ArgumentNullException>(() => { var book1 = new InMemoryBook(""); });
 
         }
     }
