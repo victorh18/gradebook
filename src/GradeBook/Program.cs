@@ -2,10 +2,11 @@
     class Program {
         static void Main(string[] args)
         {
-            var book = new InMemoryBook("Science's Grade Book");
-            book.gradeAdded += OnGradeAdded;
+            var username = args[0];
+            IBook book = new DiskBook($"{username}'s Grade Book");
+            book.GradeAdded += OnGradeAdded;
 
-            InMemoryBook.Greet(args[0]);
+            InMemoryBook.Greet(username);
             System.Console.WriteLine("Please, enter the grades you want to register followed by ENTER. Enter Q to calculate the results and exit the application.");
 
             EnterGrades(book);
@@ -23,7 +24,7 @@
             return;
         }
 
-        private static void EnterGrades(Book book)
+        private static void EnterGrades(IBook book)
         {
             string? input = "";
             int gradeNumber = 1;
